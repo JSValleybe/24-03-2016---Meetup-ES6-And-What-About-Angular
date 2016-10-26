@@ -1,0 +1,249 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/jsvalley/JSValley-fb.png"></span>
+      <p class="fs-48">Welcome Back!</p>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/JSValley/es6.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What are these components?</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Creating mini application pieces that are self defined and can be used to compose our application</li>
+        <li>Scalable application architecture</li>
+        <li>Better organization and collaboration</li>
+        <li>Easier re-usability</li>
+        <li>Simpler reasoning about your code.</li>
+        <li>Angular 2 takes this approach as does React, and web components.</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Components in Angular 1.X</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Scalable architecture in AngularJS</li>
+        <li>File Structure (components)</li>
+        <li>Modules and submodules</li>
+        <li>Prefer the 'controller as' syntax</li>
+        <li>ui-router state params for sharing information</li>
+        <li>... (more at <a href="https://github.com/johnpapa/angular-styleguide">Angular Styleguide</a>) </li>
+        <li>The component approach in Angular: Basically, removing all the standalone controllers that were bound to views and treating directives as first class citizens.</li>
+        <li>ES6/ES2015 makes it easy</li>
+        <li>Proof of concept</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Step 1 - Add Webpack for Babel transpiling and use ES6 modules</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Gulp</li>
+        <li>Webpack</li>
+        <li>Copy json data files and images to dist folder (Gulp)</li>
+        <li>Add linting and fix linting issues</li>
+        <li>Fix dependencies for bundeling with ES6 modules</li>
+        <li>Change templateUrl to template in controller definitions</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Step 2 - Better variables</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>ES2015 introduces two new ways, let and const.</li>
+        <li>Both have local scoping and don't hoist.</li>
+        <li>const is immutable as well.</li>
+        <li>We will use const for everything unless we need to change its value, then we'll go back to let.</li>
+        <li>Change var by const and let</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Step 3 - Better ES6 modules</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Export your components for testing, re-usability</li>
+        <li>Import them where needed</li>
+        <li>Don't forget to register your modules with Angular</li>
+        <li>We can import more than just js files</li>
+        <li>Refactor css</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Step 4 - Let's get classy</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Controllers as ES6 classes</li>
+        <li>Use controller and controllerAs in component configuration</li>
+        <li>Inject your dependencies</li>
+        <li>Define constructor and implement methods</li>
+        <li>Export your controller</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Step 5 - Refactor services</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Difference between service and factory</li>
+        <li> .service() and .factory() are synonymous. A service is a "newable" function and uses this. Therefore it will always return an object. A factory can return whatever we'd like.
+</li>
+        <li>Create a function for your service/factory which returns a factory object </li>
+        <li>You could use an ES6 class </li>
+        <li>Implement private and public methods</li>
+        <li>Export public methods</li>
+        <li>Inject dependencies</li>
+        <li>Export service</li>
+        <li>Register service with Angular</li>
+      </ul>
+    </article>
+    <aside class="note">
+      <section>
+        <pre class="prettyprint" data-lang="javascript">
+angular.module('app', [])
+// an actual service
+// is a "newable" function so no arrows please
+service('myService', function(){
+  this.action = ()=>{};
+})
+// a "service" but technically a factory
+.factory('myFactory', ()=> {
+  return 'heeeeey';
+});
+        </pre>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Step 6 - Using directives as first class citizens (optional)</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Define a function for your directive</li>
+        <li>Move controller and controllerAs to the directive configuration</li>
+        <li>Move styles to the directive</li>
+        <li>Export directive</li>
+        <li>Import directive in component configuration</li>
+        <li>Define directive as template in component configuration</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Recap</h2>
+    </hgroup>
+
+    <pre class="prettyprint" data-lang="javascript">
+      categories/
+      categories.js
+      categories.directive.js
+      categories.controller.js
+      categories.css/less/sass/stylus
+      categories.tmpl.html
+    </pre>
+    <article>
+      <ul class="build fade">
+        <li><b>component.js</b> is our entry file for the component. It creates the angular module and registers the directive to it. Also, if you needed routing, this is where you would do.
+</li>
+        <li><b>component.controller.js</b> this is the controller file where we create the controller for our component's directive.
+</li>
+        <li><b>component.directive.js</b> this is where we create the directive that will be the meat and potatoes of our component. It also has the responsibility of importing the styles and template
+</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/es6.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>
